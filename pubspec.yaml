@@ -1,6 +1,6 @@
 name: file_io_interface
 description: Implementation of an IOInterface from abstract_io using files
-version: 0.1.1
+version: 0.1.1+1
 author: Anders Groeschel
 homepage: https://github.com/AndersGroeschel/file_io_interface
 repository: https://github.com/AndersGroeschel/file_io_interface
