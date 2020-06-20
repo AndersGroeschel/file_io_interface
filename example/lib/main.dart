@@ -1,7 +1,6 @@
-import 'package:abstract_io/abstract_io.dart';
 import 'package:file_io_interface/file_io_interface.dart';
 import 'package:flutter/material.dart';
-
+import 'package:abstract_io/abstract_io.dart';
 
 /// the translator used for [Counter]
 class StringIntTranslator extends Translator<String, int>{
@@ -12,6 +11,9 @@ class StringIntTranslator extends Translator<String, int>{
 
   @override
   int translateWritable(String writable) {
+    if(writable == null){
+      return null;
+    }
     return int.parse(writable);
   }
 }
