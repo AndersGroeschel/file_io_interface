@@ -1,3 +1,5 @@
+library file_io_interface;
+
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:abstract_io/abstract_io.dart';
