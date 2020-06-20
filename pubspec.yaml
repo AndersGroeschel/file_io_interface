@@ -2,8 +2,8 @@ name: file_io_interface
 description: Implementation of an IOInterface from abstract_io using files
 version: 0.1.0
 author: Anders Groeschel
-homepage:
-repository:
+homepage: https://github.com/AndersGroeschel/file_io_interface
+repository: https://github.com/AndersGroeschel/file_io_interface
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
