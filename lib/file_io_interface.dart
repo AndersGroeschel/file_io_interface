@@ -3,23 +3,18 @@ import 'dart:typed_data';
 import 'package:abstract_io/abstract_io.dart';
 import 'package:path_provider/path_provider.dart';
 
-
 /// the base interface for using files for saving with local files
-abstract class _BaseFileInterface<T> extends IOInterface<T>{
-
+abstract class _BaseFileInterface<T> extends IOInterface<T> {
   /// the file path of the file there is no need to get the local app directory
   /// that is done automatically
   final String filePath;
 
-  _BaseFileInterface(
-    this.filePath
-  );
+  _BaseFileInterface(this.filePath);
 
   /// returns the file associated with the [filePath]
   Future<File> get _file async {
     return File('${(await getApplicationDocumentsDirectory()).path}/$filePath');
   }
-
 
   @override
   Future<bool> deleteData() async {
@@ -31,16 +26,11 @@ abstract class _BaseFileInterface<T> extends IOInterface<T>{
       return false;
     }
   }
-
-
 }
 
 /// an [IOInterface] for saving a value to a file as a string
-class StringFileInterface extends _BaseFileInterface<String>{
-
-  StringFileInterface(
-    String filePath
-  ) : super(filePath);
+class StringFileInterface extends _BaseFileInterface<String> {
+  StringFileInterface(String filePath) : super(filePath);
 
   @override
   Future<void> requestData() async {
@@ -60,15 +50,11 @@ class StringFileInterface extends _BaseFileInterface<String>{
     }
     return false;
   }
-  
 }
 
 /// an [IOInterface] for saving a value to a file as a list of bytes
-class ByteFileInterface extends _BaseFileInterface<Uint8List>{
-  
-  ByteFileInterface(
-    String filePath
-  ) : super(filePath);
+class ByteFileInterface extends _BaseFileInterface<Uint8List> {
+  ByteFileInterface(String filePath) : super(filePath);
 
   @override
   Future<void> requestData() async {
@@ -88,8 +74,4 @@ class ByteFileInterface extends _BaseFileInterface<Uint8List>{
     }
     return false;
   }
-  
 }
-
-
-
