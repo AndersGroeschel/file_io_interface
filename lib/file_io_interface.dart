@@ -21,7 +21,7 @@ abstract class _BaseFileInterface<T> extends IOInterface<T> {
   @override
   Future<bool> deleteData() async {
     try {
-      (await _file).delete();
+      await (await _file).delete();
       return true;
     } catch (e) {
       print("delete error for $filePath: \n$e");
@@ -36,9 +36,13 @@ class StringFileInterface extends _BaseFileInterface<String> {
 
   @override
   Future<void> requestData() async {
-    File file = await _file;
-    String data = await file.readAsString();
-    onDataRecieved(data);
+    try {
+      File file = await _file;
+      String data = await file.readAsString();
+      onDataRecieved(data);
+    } catch (e) {
+      onDataRecieved(null);
+    }
   }
 
   @override
@@ -60,9 +64,13 @@ class ByteFileInterface extends _BaseFileInterface<Uint8List> {
 
   @override
   Future<void> requestData() async {
-    File file = await _file;
-    Uint8List data = await file.readAsBytes();
-    onDataRecieved(data);
+    try {
+      File file = await _file;
+      Uint8List data = await file.readAsBytes();
+      onDataRecieved(data);
+    } catch (e) {
+      onDataRecieved(null);
+    }
   }
 
   @override
